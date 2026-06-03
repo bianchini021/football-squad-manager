@@ -20,9 +20,10 @@ public class Main {
                     cadastrarJogador();
                     break;
                 case 2:
-                    tecnicoAtual = cadastrarTecnico();
+                    cadastrarTecnico();
                     break;
                 case 3:
+
                     break;
                 default:
                     System.out.println("Opção inválida!");
@@ -84,18 +85,19 @@ public class Main {
         }
     }
 
-    public static Tecnico cadastrarTecnico(){
+    public static void cadastrarTecnico(){
         if(tecnicoAtual != null){
-            System.out.println("Já existe um técnico cadastrado, tem certeza que deseja mudar? (S/N");
+            System.out.println("Já existe um técnico cadastrado, tem certeza que deseja mudar? (S/N)");
             char opc = Character.toUpperCase(input.next().charAt(0));
 
             if(opc == 'N'){
-                return tecnicoAtual;
-            } else if (opc != 'S'){
+                return;
+            } else if(opc != 'S'){
                 System.out.println("Opção inválida!");
-                return tecnicoAtual;
+                return;
             }
         }
+
         System.out.println("+--- CADASTRAR TÉCNICO ---+");
         System.out.println("Digite o nome do técnico: ");
         String nome = input.nextLine().toUpperCase();
@@ -112,11 +114,9 @@ public class Main {
         System.out.println("Digite o dia: ");
         int dia = Integer.parseInt(input.nextLine());
 
-        LocalDate dataInicioMandato = LocalDate.of(ano, mes,dia);
+        LocalDate dataInicioMandato = LocalDate.of(ano, mes, dia);
 
+        tecnicoAtual = new Tecnico(nome, nacionalidade, dataInicioMandato);
         System.out.println("Técnico criado com sucesso!");
-
-
-        return new Tecnico(nome, nacionalidade, dataInicioMandato);
     }
 }
