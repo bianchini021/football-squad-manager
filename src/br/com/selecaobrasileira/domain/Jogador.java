@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Jogador {
-    private int Id;
+    private int id;
     private String nome;
     private LocalDate dataNascimento;
     private String clube;
@@ -13,7 +13,7 @@ public class Jogador {
     private boolean convocado;
 
     public Jogador(int id, String nome, LocalDate dataNascimento, String clube, int numCamisa, Posicao posicao, boolean convocado) {
-        Id = id;
+        this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.clube = clube;
@@ -23,7 +23,7 @@ public class Jogador {
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public String getNome() {

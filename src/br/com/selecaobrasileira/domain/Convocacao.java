@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Convocacao {
-    private int Id;
+    private int id;
     private String competicao;
     private LocalDate dataConvocacao;
     private Tecnico tecnico;
@@ -17,7 +17,7 @@ public class Convocacao {
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public String getCompeticao() {
@@ -53,5 +53,16 @@ public class Convocacao {
                 System.out.println("Jogador:" +j.getNome());
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Convocacao{" +
+                "id=" + id +
+                ", competicao='" + competicao + '\'' +
+                ", dataConvocacao=" + dataConvocacao +
+                ", tecnico=" + tecnico +
+                ", jogadores=" + jogadores +
+                '}';
     }
 }
