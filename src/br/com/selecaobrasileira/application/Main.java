@@ -1,14 +1,20 @@
 package br.com.selecaobrasileira.application;
 
+import br.com.selecaobrasileira.domain.Jogador;
+import br.com.selecaobrasileira.domain.Posicao;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     static Scanner input = new Scanner(System.in);
+    static ArrayList<Jogador> jogadoresCadastrados = new ArrayList<>();
     public static void main(String[] args) {
         byte opc = menuPrincipal();
         while (opc != 4){
             switch (opc){
                 case 1:
+                    cadastrarJogador();
                     break;
                 case 2:
                     break;
@@ -32,5 +38,45 @@ public class Main {
         byte opc = input.nextByte();
 
         return opc;
+    }
+
+    public static void cadastrarJogador(){
+        System.out.println("+--- CADASTRAR JOGADORES ---+");
+
+        System.out.println("Digite o nome do jogador: ");
+        String nome = input.nextLine().toUpperCase();
+
+        System.out.println("Digite o ano de nascimento: ");
+        int ano = Integer.parseInt(input.nextLine());
+
+        System.out.println("Digite o mês (1 - 12): ");
+        int mes = Integer.parseInt(input.nextLine());
+
+        System.out.println("Digite o dia: ");
+        int dia = Integer.parseInt(input.nextLine());
+
+        LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
+
+        System.out.println("Digite o nome do clube do jogador: ");
+        String clube = input.nextLine().toUpperCase();
+
+        System.out.println("Digite o número da camisa: ");
+        int numCamisa = Integer.parseInt(input.nextLine());
+
+        System.out.println("Posições disponíveis:");
+        for (int i = 0; i < Posicao.values().length; i++) {
+            System.out.println(i + 1 +" - " + Posicao.values()[i]);
+        }
+        System.out.print("Selecione a posição: ");
+        int opcPosicao = Integer.parseInt(input.nextLine()) - 1;
+        Posicao posicao = Posicao.values()[opcPosicao];
+
+        Jogador jogador = new Jogador(nome, dataNascimento, clube, numCamisa, posicao);
+
+        if(jogadoresCadastrados.add(jogador)){
+            System.out.println("Jogador cadastrado com sucesso!");
+        } else {
+            System.out.println("Aconteceu um erro ao cadastrar jogador.");
+        }
     }
 }

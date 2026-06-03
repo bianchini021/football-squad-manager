@@ -10,16 +10,14 @@ public class Jogador {
     private String clube;
     private int numCamisa;
     private Posicao posicao;
-    private boolean convocado;
+    private boolean convocado = false;
 
-    public Jogador(int id, String nome, LocalDate dataNascimento, String clube, int numCamisa, Posicao posicao, boolean convocado) {
-        this.id = id;
+    public Jogador(String nome, LocalDate dataNascimento, String clube, int numCamisa, Posicao posicao){
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.clube = clube;
         this.numCamisa = numCamisa;
         this.posicao = posicao;
-        this.convocado = convocado;
     }
 
     public int getId() {
@@ -72,7 +70,6 @@ public class Jogador {
     @Override
     public String toString() {
         return "Jogador{" +
-                "Id=" + Id +
                 ", nome='" + nome + '\'' +
                 ", dataNascimento=" + dataNascimento +
                 ", clube='" + clube + '\'' +
